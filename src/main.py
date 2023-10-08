@@ -2,19 +2,11 @@ from typing import List
 
 from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
-from database import SessionLocal
+from database import get_db
 from task.schemas import *
 from task.models import *
 
 app = FastAPI()
-
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 
 @app.post("/tasks/add/", response_model=TaskResponse)
