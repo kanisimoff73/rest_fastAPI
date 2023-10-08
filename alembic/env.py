@@ -11,9 +11,9 @@ import sys
 sys.path.append(os.path.join(sys.path[0], "src"))  # т.к. 'env.py' находиться за пределами директории 'src', при прогоне
 # миграций он не будет видеть некоторые переменные, поэтому я добавил такую конструкцию
 
-from src.config import DB_USER, DB_PASS, DB_HOST, DB_PORT, DB_NAME
-from src.database import Base
-from src.task.models import *
+from config import DB_USER, DB_PASS, DB_HOST, DB_PORT, DB_NAME
+from database import Base
+from task.models import *
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

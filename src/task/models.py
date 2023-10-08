@@ -2,7 +2,7 @@ from sqlalchemy import Column, String, JSON, Integer, Sequence
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import text
 import uuid
-from src.database import Base
+from database import Base
 
 
 class Task(Base):

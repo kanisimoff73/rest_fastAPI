@@ -2,9 +2,9 @@ from typing import List
 
 from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
-from src.database import SessionLocal
-from src.task.schemas import *
-from src.task.models import *
+from database import SessionLocal
+from task.schemas import *
+from task.models import *
 
 app = FastAPI()
 
