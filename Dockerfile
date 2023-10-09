@@ -10,4 +10,6 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
+RUN apt-get update && apt-get install -y postgresql-client
+
 RUN chmod a+x docker/*.sh
