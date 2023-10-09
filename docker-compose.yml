@@ -1,11 +1,11 @@
-version: "1.29.2"
+version: "2.22.0"
 services:
   db:
     image: postgres:15
     container_name: db_app
     command: -p 5432
     expose:
-      - 5435
+      - 2345
     env_file:
       - .env-non-dev
 
@@ -15,7 +15,7 @@ services:
     env_file:
       - .env-non-dev
     container_name: fastapi_app
-    command: ["/docker/app.sh"]
+    command: ["/fastapi_app/docker/app.sh"]
     ports:
       - 6789:8000
     depends_on:
