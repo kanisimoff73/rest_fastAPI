@@ -1,13 +1,13 @@
-version: "2.22.0"
+version: "3.8"
+
 services:
-  db:
-    image: postgres:15
+  postgres-db:
+    image: postgres:latest
     container_name: db_app
-    command: -p 5432
-    expose:
-      - 2345
     env_file:
       - .env-non-dev
+    ports:
+      - "5432:5432"
 
   app:
     build:
@@ -17,6 +17,6 @@ services:
     container_name: fastapi_app
     command: ["/fastapi_app/docker/app.sh"]
     ports:
-      - 6789:8000
+      - "9000:8000"
     depends_on:
-      - db
+      - postgres-db
