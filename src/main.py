@@ -10,7 +10,7 @@ app = FastAPI()
 
 
 @app.post("/tasks/add/", response_model=TaskResponse)
-async def add_task(task: TaskCreate, db: Session = Depends(get_db)):
+def add_task(task: TaskCreate, db: Session = Depends(get_db)):
     try:
         new_task = Task(**task.dict())
         db.add(new_task)
@@ -29,7 +29,7 @@ async def add_task(task: TaskCreate, db: Session = Depends(get_db)):
 
 
 @app.get("/tasks/", response_model=List[TaskResponse])
-async def get_all_tasks(db: Session = Depends(get_db)):
+def get_all_tasks(db: Session = Depends(get_db)):
     tasks = db.query(Task).all()
     return [{
         "task_sid": str(task.task_sid),
@@ -40,7 +40,7 @@ async def get_all_tasks(db: Session = Depends(get_db)):
 
 
 @app.put("/tasks/{task_sid}", response_model=TaskUpdate)
-async def update_task(task_sid: str, updated_task: TaskCreate, db: Session = Depends(get_db)):
+def update_task(task_sid: str, updated_task: TaskCreate, db: Session = Depends(get_db)):
     existing_task = db.query(Task).filter(Task.task_sid == task_sid).first()
 
     if existing_task is None:
