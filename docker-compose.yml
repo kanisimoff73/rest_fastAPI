@@ -7,7 +7,7 @@ services:
     env_file:
       - .env-non-dev
     ports:
-      - "9876:5432"
+      - "8765:5432"
 
   app:
     build:
@@ -15,7 +15,7 @@ services:
     env_file:
       - .env-non-dev
     container_name: fastapi_app
-    command: ["/fastapi_app/docker/app.sh"]
+    command: ["docker/app.sh"]
     ports:
       - "7000:8000"
     depends_on:
