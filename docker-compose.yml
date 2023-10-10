@@ -7,7 +7,7 @@ services:
     env_file:
       - .env-non-dev
     ports:
-      - "5433:5432"
+      - "9876:5432"
 
   app:
     build:
@@ -17,6 +17,6 @@ services:
     container_name: fastapi_app
     command: ["/fastapi_app/docker/app.sh"]
     ports:
-      - "9000:8000"
+      - "7000:8000"
     depends_on:
       - postgres-db
